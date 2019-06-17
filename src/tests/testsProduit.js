@@ -1,5 +1,5 @@
 var supertest = require('supertest');
-var server = supertest.agent("http://localhost:8080");
+var server = supertest.agent("http://localhost:80");
 
 var express = require('express');
 var app = express();

@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 var cors = require('cors');
 
 var myRouter = express.Router();
@@ -99,4 +101,15 @@ myRouter.route('/officine/:id&:nom')
 app.use(cors());
 app.use(bodyParser.json());
 app.use(myRouter);
-app.listen(8080);
+/*
+app.listen(80, () => {
+	console.log("HTTP server listening on port 80");
+});
+*/
+
+io.on('connection', (socketServer) => {
+	socketServer.on('npmStop', () => {
+		process.exit(0);
+	});
+});
+server.listen(80);
