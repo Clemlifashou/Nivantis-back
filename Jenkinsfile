@@ -30,7 +30,6 @@ pipeline {
         }
         stage('Test') {
           steps {
-            sh "sleep 30s"
             sh "npm test"
             sh "npm stop"
           }
