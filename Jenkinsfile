@@ -1,9 +1,9 @@
 pipeline {
   agent {
-  label 'slave-angular'
+    label 'slave-angular'
   }
   triggers {
-  pollSCM('H/5 * * * *')
+    pollSCM('H/5 * * * *')
   }
   options {
     disableConcurrentBuilds()
@@ -31,8 +31,9 @@ pipeline {
         stage('Test') {
           steps {
             sh "npm test"
-        }
-      }      
+          }
+        }      
+      }
     }
   }
   post {
