@@ -1,6 +1,6 @@
 pipeline {
 agent {
-label 'slave-java'
+label 'slave-angular'
 }
 triggers {
 pollSCM('H/5 * * * *')
