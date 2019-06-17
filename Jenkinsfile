@@ -21,15 +21,18 @@ pipeline {
       sh "npm install"
       }
     }
-    stage('Run serveur') {
-      steps{
-      sh "node serveur.js"
-      }
-    }
-    stage('Test') {
-      steps{
-      sh "npm test"
-      }
+    stage('Run serveur and test') {
+      parallel {
+        stage('Run serveur') {
+          steps{
+            sh "node serveur.js"
+          }
+        }
+        stage('Test') {
+          steps {
+            sh "npm test"
+        }
+      }      
     }
   }
   post {
