@@ -25,14 +25,14 @@ pipeline {
       parallel {
         stage('Run serveur') {
           steps{
-            sh "node serveur.js"
+            sh "npm start"
           }
         }
         stage('Test') {
           steps {
             sh "sleep 30s"
             sh "npm test"
-            sh "node stop"
+            sh "npm stop"
           }
         }      
       }
