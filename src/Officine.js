@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('C:\\sqlite\\Databases\\Nivantis.db');
+const db = new sqlite3.Database('Nivantis.db');
 
 var villes = require('./Ville');
 
