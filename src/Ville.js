@@ -10,7 +10,6 @@ const insererVille = function(data, res){
                 res(this.lastId, 201);
                 console.log(`A row has been inserted with id ${this.lastID}`);
             }
-
         })
     }else{
         res.status(400).json('Product not created');

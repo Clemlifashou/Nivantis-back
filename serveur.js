@@ -83,11 +83,13 @@ myRouter.route('/officine')
 		});
 	});
 
-myRouter.route('/officine/:id&:nom')
+myRouter.route('/officine')
 	.get(function(req, res){
 		var data = {
-			id: (req.params.id === "null"? null: req.params.id),
-			nom: (req.params.nom === "null"? null: req.params.nom)
+			id: req.query.id ,
+			nom: req.query.nom,
+			latitude: req.query.latitude,
+			longitude: req.query.longitude
 		};
 		officine.getOfficine(data, function(response, status){
 			if(status === 200){

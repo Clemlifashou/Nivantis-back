@@ -6,9 +6,9 @@ var villes = require('./Ville');
 const insererOfficine = function(data, res) {
     setVille(data.ville, function (response, status) {
         if (status === 200) {
-            db.run('INSERT INTO Officine(raison_sociale, ville, adresse, complement_adresse, mail, telephone, date_adhesion, nom_gerant) ' +
-                'VALUES (?,?,?,?,?,?,?,?)',
-                data.rs, response, data.adr, data.cpmadr, data.mail, data.tel, data.adh, data.nom, function (err) {
+            db.run('INSERT INTO Officine(raison_sociale, ville, adresse, complement_adresse, mail, telephone, date_adhesion, nom_gerant, latitude, longitude) ' +
+                'VALUES (?,?,?,?,?,?,?,?,?,?)',
+                data.rs, response, data.adr, data.cpmadr, data.mail, data.tel, data.adh, data.nom, data.latitude, data.longitude, function (err) {
                     if (err) {
                         console.log(err);
                         res('Officine non creee', 400);
@@ -35,6 +35,14 @@ const getOfficine = function(data, res){
     }else if(data.nom){
         console.log(data.nom);
         db.get("SELECT * FROM officine WHERE raison_sociale=?",data.nom, function(err, row){
+            if (err) {
+                res('No officine found', 400);
+            } else {
+                res(row, 200);
+            }
+        });
+    } else if(data.latitude && data.longitude){
+        db.get("SELECT * FROM officine WHERE latitude=? and longitude=?",data.latitude, data.longitude, function(err, row){
             if (err) {
                 res('No officine found', 400);
             } else {
