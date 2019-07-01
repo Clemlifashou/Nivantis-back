@@ -30,7 +30,7 @@ describe('POST officine', function(){
 describe('GET officine with id', function(){
     it('respond with an officine', function(done){
         server
-            .get("/officine/1&null")
+            .get("/officine?id=1")
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200, done);
@@ -40,7 +40,7 @@ describe('GET officine with id', function(){
 describe('GET officine with name', function(){
     it('respond with an officine', function(done){
         server
-            .get("/officine/null&Montpellier")
+            .get("/officine?nom=Montpellier")
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200, done);
