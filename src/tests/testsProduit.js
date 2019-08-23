@@ -13,7 +13,7 @@ describe('GET products', function(){
     });
 });
 
-/*
+
 describe('POST product', function(){
     let data = {
         nom: "doliprane",
@@ -31,7 +31,7 @@ describe('POST product', function(){
             });
     });
 });
-*/
+
 
 describe('GET product', function(){
    it('respond with a product', function(done){
